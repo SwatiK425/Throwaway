@@ -31,7 +31,7 @@ function App() {
         if (p.eventType === 'INSERT') setNotes(n => [p.new as any, ...n])
         else if (p.eventType === 'DELETE') setNotes(n => n.filter(x => x.id !== p.old.id))
       }).subscribe()
-    return () => supabase.removeChannel(ch)
+    return () => { supabase.removeChannel(ch) }
   }, [user])
 
   if (loading) return <div style={styles.center}>Loading…</div>
